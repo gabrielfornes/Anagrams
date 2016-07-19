@@ -25,7 +25,7 @@ foreach ( $item in $web )
 
 do
 {
-  $NumOK         = $true
+  $NumOK = $true
   Clear-Host
 
   Write-Output 'All the anagrams of ""'

@@ -33,14 +33,9 @@ do
   {
     Write-Output "$i : $($AllAnagrams[$i])"
   }
-  try
-  {
-    [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
-  }
-  catch
-  {
-    $NumOK = $false
-  }
+  
+  [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
+  
   
   
 

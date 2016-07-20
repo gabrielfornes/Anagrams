@@ -25,7 +25,7 @@ foreach ( $item in $web )
 
 do
 {
-  $NumOK = $true
+  
   Clear-Host
 
   Write-Output 'All the anagrams of ""'
@@ -58,5 +58,12 @@ do
     Start-Process -PSPath 'C:\Program Files\Internet Explorer\iexplore.exe' "http://anagram-solver.net$($AllLinks[$Choice])"
   }
   
+  $ReadMoreChoice = Read-Host 'Do you want to pick another work to read about?(y/n)'
+  if ($ReadMoreChoice -eq 'y')
+  {
+    $NumOK = $false
+  }
+
+
 }
 until (($Choice -lt ($AllAnagrams.Count) -and $NumOK))

@@ -1,14 +1,4 @@
-﻿<#
-.Synopsis
-   Short description
-.DESCRIPTION
-   Long description
-.EXAMPLE
-   Example of how to use this cmdlet
-.EXAMPLE
-   Another example of how to use this cmdlet
-#>
-function Get-Anagram
+﻿Get-Anagram
 {
     [CmdletBinding()]    
     
@@ -61,8 +51,7 @@ function Get-Anagram
     }
   
     [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
-  
-  
+     
   
 
     $DefaultBrower = Get-Item 'HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice' | Out-String
@@ -84,13 +73,20 @@ function Get-Anagram
       Start-Process -PSPath 'C:\Program Files\Internet Explorer\iexplore.exe' "http://anagram-solver.net$($AllLinks[$Choice])"
     }
   
-    $ReadMoreChoice = Read-Host 'Do you want to pick another word to read about?(y/n)'
+    [string]$ReadMoreChoice = Read-Host 'Do you want to pick another word to read about?(y/n)'
     if ($ReadMoreChoice -eq 'y')
     {
       $NumOK = $false
+      Write-Host 'In Host statement'
+    }
+    else
+    {
+      $NumOK = $true
+      Write-Host 'In Else statement'
+      
     }
 
 
   }
-  until (($Choice -lt ($AllAnagrams.Count) -and $NumOK))
+  until ($NumOK -eq $true)
 }

@@ -23,26 +23,26 @@ foreach ( $item in $web )
   
 }
 
-  do
-  {
-    $NumOK = $true
-      Clear-Host
+do
+{
+  $NumOK         = $true
+  Clear-Host
 
-      Write-Output 'All the anagrams of ""'
-      for ($i=0; $i -lt ($AllAnagrams.Count); $i++)
-      {
-        Write-Output "$i : $($AllAnagrams[$i])"
-      }
-    try
-    {
-       [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
-    }
-    catch
-    {
-       $NumOK = $false
-    }
+  Write-Output 'All the anagrams of ""'
+  for ($i = 0; $i -lt ($AllAnagrams.Count); $i++)
+  {
+    Write-Output "$i : $($AllAnagrams[$i])"
   }
-  until (($Choice -lt ($AllAnagrams.Count) -and $NumOK))
+  try
+  {
+    [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
+  }
+  catch
+  {
+    $NumOK = $false
+  }
+  
+  
 
   $DefaultBrower = Get-Item 'HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice' | Out-String
   $DefaultBrower = ($DefaultBrower -split 'Progid :').Trim()[1]
@@ -50,21 +50,18 @@ foreach ( $item in $web )
   Write-Output "http://anagram-solver.net$($AllLinks[$Choice])"
   if ($DefaultBrower -eq 'ChromeHTML')
   {
-    Start-Process Chrome "http://anagram-solver.net$($AllLinks[$Choice])"
-    
+    Start-Process Chrome "http://anagram-solver.net$($AllLinks[$Choice])"    
   }
 
   elseif ($DefaultBrower -eq 'FirefoxURL')
   {
     Start-Process firefox "http://anagram-solver.net$($AllLinks[$Choice])"
-
   }
 
   else 
   {
     Start-Process -PSPath 'C:\Program Files\Internet Explorer\iexplore.exe' "http://anagram-solver.net$($AllLinks[$Choice])"
   }
-
   
-
-
+}
+until (($Choice -lt ($AllAnagrams.Count) -and $NumOK))

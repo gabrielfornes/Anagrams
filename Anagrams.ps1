@@ -1,4 +1,4 @@
-﻿Get-Anagram
+﻿function Get-Anagram
 {
     [CmdletBinding()]    
     
@@ -47,8 +47,7 @@
     Write-Output "All the anagrams of `"$Word`""
     for ($i = 0; $i -lt ($AllAnagrams.Count); $i++)
     {
-      Write-Output "$i : $($AllAnagrams[$i])"
-      Write-Output 'poop'
+      Write-Output "$i : $($AllAnagrams[$i])"      
     }
   
     [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
@@ -77,17 +76,14 @@
     [string]$ReadMoreChoice = Read-Host 'Do you want to pick another word to read about?(y/n)'
     if ($ReadMoreChoice -eq 'y')
     {
-      $NumOK = $false
-      Write-Host 'In Host statement'
+      $NumOK = $false      
     }
     else
     {
-      $NumOK = $true
-      Write-Host 'In Else statement'
-      
+      $NumOK = $true           
     }
 
 
   }
-  until ($NumOK -eq $true)
+  while ($NumOK -eq $false)
 }

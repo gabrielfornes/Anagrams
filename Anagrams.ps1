@@ -42,12 +42,13 @@
   do
   {
   
-    Clear-Host
+    #Clear-Host
 
     Write-Output "All the anagrams of `"$Word`""
     for ($i = 0; $i -lt ($AllAnagrams.Count); $i++)
     {
       Write-Output "$i : $($AllAnagrams[$i])"
+      Write-Output 'poop'
     }
   
     [int]$Choice = Read-Host 'Which word do you want to open?(write a number)'
